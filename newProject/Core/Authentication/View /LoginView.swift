@@ -1,5 +1,5 @@
 //
-//   LoginView.swift
+//  LoginView.swift
 //  newProject
 //
 //  Created by Harun Bicakci on 7/13/24.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct _LoginView: View {
+struct LoginView: View {
     @State private var email = ""
     @State private var password = ""
     @EnvironmentObject var viewModel: AuthViewModel
@@ -27,7 +27,7 @@ struct _LoginView: View {
                 InputView(text: $email,
                         title: "Email Address",
                         placeholder: "name@example.com")
-                    // .autocapitalization(.none)
+                        .autocapitalization(.none)
                     
                 InputView(text: $password,
                         title: "Password",
@@ -80,5 +80,5 @@ struct _LoginView: View {
 }
 
 #Preview {
-    _LoginView()
+    LoginView()
 }
