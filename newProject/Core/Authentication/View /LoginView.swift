@@ -79,6 +79,10 @@ struct LoginView: View {
     }
 }
 
+
+
+struct LoginView
+
 #Preview {
     LoginView()
 }
