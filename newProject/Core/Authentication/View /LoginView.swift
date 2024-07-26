@@ -41,8 +41,7 @@ struct LoginView: View {
                 
                 Button{
                     Task{
-                        try await                     viewModel.signIn(withEmail: email, password: password)
-
+                        try await viewModel.signIn(withEmail: email, password: password)
                     }
                 } label: { 
                     HStack{
@@ -54,6 +53,8 @@ struct LoginView: View {
                     .frame(width: 220, height: 48, alignment: .center)
                 }
                 .background(Color(.systemBlue))
+                .disabled(!formIsValid)
+                .opacity(formIsValid ? 1.0 : 0.5)
                 .cornerRadius(10)
                 .padding(.top, 30)
                 
@@ -79,10 +80,24 @@ struct LoginView: View {
     }
 }
 
+// MARK: - AuthenticationFormProtocol
 
-
-struct LoginView
-
-#Preview {
-    LoginView()
+extension LoginView: AuthenticationFormProtocol {
+    var formIsValid: Bool {
+        return !email.isEmpty
+        && email.contains("@")
+        && !password.isEmpty
+        && password.count > 5
+    }
 }
+
+struct LoginView_Previews: PreviewProvider {
+    
+    static var previews: some View{
+        LoginView()
+    }
+}
+
+//#Preview {
+//    LoginView()
+//}
